@@ -1,7 +1,7 @@
-const qwerty = document.getElementById('qwerty')
-const phrase = document.getElementById('phrase')
-const startButton = document.querySelector('.btn__reset')
-let missed = 0
+const qwerty = document.getElementById('qwerty');
+const phrase = document.getElementById('phrase');
+const startButton = document.querySelector('.btn__reset');
+let missed = 0;
 
 startButton.addEventListener('click', () => {
     overlay.style.display = 'none';
@@ -40,35 +40,47 @@ const addPhraseToDisplay = arr => {
 
 const phraseArray = getRandomPhraseAsArray(arrayAns);
 
-addPhraseToDisplay(phraseArray.toLowerCase());
+addPhraseToDisplay(phraseArray);
 
 const checkLetter = buttonClicked => {
     const liAll = document.querySelectorAll('.letter');
     let match = null;
     for(let i = 0; i < liAll.length; i++){
-        if( buttonClicked == liAll[i].textContent){
+        if( buttonClicked.textContent == liAll[i].textContent.toLowerCase()){
             liAll[i].classList.add('show');
-            match = buttonClicked.textContent;
+            match = buttonClicked.textContent.toLowerCase();
         }
-    }
-    return;
+    };
+    return match;
 }
 
 qwerty.addEventListener('click', event => {
     if(event.target.tagName === "BUTTON" && event.target.classList != "chosen"){
         event.target.classList.add('chosen');
-        event.target.isabled = true;
-        let btnClicked = event.target.textContent;
+        event.target.disabled = true;
+        let btnClicked = event.target;
         const letterFound = checkLetter(btnClicked);
-        if(letterFound === null){
-            let hearts = document.querySelectorAll(".tries img");
-            hearts[missed] = "images/lostHeart.png";
-            missed += 1;
+        if(letterFound == null){
+            const hearts = document.querySelectorAll(".tries img");
+            hearts[missed].src = "images/lostHeart.png";
+            missed ++;
         }
     }
 }); 
 
 const checkWin = () => {
-
+    const letterClass = querySelectorAll('.letter');
+    const letterShow = querySelectorAll('.show');
+    const overlay = querySelector('.overlay');
+    const title = querySelector('.title');
+    if(letterClass.length == letterClass.length){
+        overlay.classList.add('win');
+        title.textContent = "You Won!"
+        overlay.style.display = flex;   
+    } else if(missed >= 5){
+        overlay.classList.add('lose');
+        overlay.textContent = "You lost!";
+        overlay.style.display = flex;
+    }
 }
 
