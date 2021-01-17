@@ -76,11 +76,11 @@ const checkWin = () => {
     if(letterClass.length == letterShow.length){
         overlay.classList.add('win');
         title.textContent = "You Won!"
-        overlay.style.display = flex;   
+        overlay.style.display = 'flex';   
     } else if(missed >= 5){
         overlay.classList.add('lose');
         overlay.textContent = "You lost!";
-        overlay.style.display = flex;
+        overlay.style.display = 'flex';
     }
 }
 
