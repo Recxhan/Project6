@@ -73,7 +73,7 @@ const checkWin = () => {
     const letterShow = document.querySelectorAll('.show');
     const overlay = document.querySelector('.overlay');
     const title = document.querySelector('.title');
-    if(letterClass.length == letterClass.length){
+    if(letterClass.length == letterShow.length){
         overlay.classList.add('win');
         title.textContent = "You Won!"
         overlay.style.display = flex;   
