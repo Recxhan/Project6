@@ -71,7 +71,7 @@ qwerty.addEventListener('click', event => {
 const checkWin = () => {
     const letterClass = document.querySelectorAll('.letter');
     const letterShow = document.querySelectorAll('.show');
-    const overlay = document.querySelector('.overlay');
+    const overlay = document.querySelector('#overlay');
     const title = document.querySelector('.title');
     if(letterClass.length == letterShow.length){
         overlay.classList.add('win');
