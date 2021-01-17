@@ -62,17 +62,17 @@ qwerty.addEventListener('click', event => {
         const letterFound = checkLetter(btnClicked);
         if(letterFound == null){
             const hearts = document.querySelectorAll(".tries img");
-            hearts[missed].src = "images/lostHeart.png";
+            // hearts[missed].src = "images/lostHeart.png";
             missed ++;
         }
-    }checkWin
+    }checkWin()
 }); 
 
 const checkWin = () => {
-    const letterClass = querySelectorAll('.letter');
-    const letterShow = querySelectorAll('.show');
-    const overlay = querySelector('.overlay');
-    const title = querySelector('.title');
+    const letterClass = docuemnt.querySelectorAll('.letter');
+    const letterShow = document.querySelectorAll('.show');
+    const overlay = docuemnt.querySelector('.overlay');
+    const title = document.querySelector('.title');
     if(letterClass.length == letterClass.length){
         overlay.classList.add('win');
         title.textContent = "You Won!"
