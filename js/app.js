@@ -65,7 +65,7 @@ qwerty.addEventListener('click', event => {
             hearts[missed].src = "images/lostHeart.png";
             missed ++;
         }
-    }
+    }checkWin
 }); 
 
 const checkWin = () => {
@@ -82,5 +82,13 @@ const checkWin = () => {
         overlay.textContent = "You lost!";
         overlay.style.display = flex;
     }
+}
+
+const reset = () => {
+    missed = 0;
+    for (let i = 0; i < hearts.length; i++){
+        hearts[i] = 'images/liveHeart.png'
+    };
+    addPhraseToDisplay(phraseArray);
 }
 
