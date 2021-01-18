@@ -79,8 +79,8 @@ button {
 
 .letter {
   font-size: var(--font-size-medium);
-  height: 65px;
-  width: 65px;
+  height: 50px;
+  width: 50px;
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   color: transparent;
@@ -95,6 +95,9 @@ button {
 .show {
   color: #000;
   background-color: #76CE82;
+  height: 60px;
+  width: 60px;
+  transition: all .1s ease-out;
 }
 
 /* Keyboard */

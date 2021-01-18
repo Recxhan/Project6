@@ -2,15 +2,14 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const startButton = document.querySelector('.btn__reset');
 let missed = 0;
+const hearts = document.querySelectorAll(".tries img");
+const overlay = document.querySelector('#overlay');
 
 startButton.addEventListener('click', () => {
     overlay.style.display = 'none';
-    gameReset();
+    reset();
 });
 
-function gameReset(){
-    missed = 0;
-}
 
 const arrayAns = [
     'Fight For Freedom',
@@ -60,9 +59,8 @@ qwerty.addEventListener('click', event => {
         event.target.disabled = true;
         let btnClicked = event.target;
         const letterFound = checkLetter(btnClicked);
-        if(letterFound == null){
-            const hearts = document.querySelectorAll(".tries img");
-            // hearts[missed].src = "images/lostHeart.png";
+        if(letterFound === null){
+            hearts[missed].src = "images/lostHeart.png";
             missed ++;
         }
     }checkWin()
@@ -71,24 +69,30 @@ qwerty.addEventListener('click', event => {
 const checkWin = () => {
     const letterClass = document.querySelectorAll('.letter');
     const letterShow = document.querySelectorAll('.show');
-    const overlay = document.querySelector('#overlay');
     const title = document.querySelector('.title');
     if(letterClass.length == letterShow.length){
         overlay.classList.add('win');
         title.textContent = "You Won!"
-        overlay.style.display = 'flex';   
+        overlay.style.display = "flex";  
     } else if(missed >= 5){
         overlay.classList.add('lose');
-        overlay.textContent = "You lost!";
-        overlay.style.display = 'flex';
+        title.textContent = "You lost!";
+        overlay.style.display = "flex";
     }
 }
 
 const reset = () => {
     missed = 0;
     for (let i = 0; i < hearts.length; i++){
-        hearts[i] = 'images/liveHeart.png'
+        hearts[i].src = 'images/liveHeart.png'
     };
-    addPhraseToDisplay(phraseArray);
+    phrase.innerHTML = "";
+    const anotherPhraseArray = getRandomPhraseAsArray(arrayAns);
+    addPhraseToDisplay(anotherPhraseArray);
+    const BtnChosen = document.querySelectorAll('.chosen');
+    for(i = 0; i < BtnChosen.length; i++){
+    BtnChosen[i].disabled = false;
+    BtnChosen[i].classList.remove('chosen');
+}
 }
 
